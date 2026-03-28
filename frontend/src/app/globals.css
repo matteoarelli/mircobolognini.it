@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette: Dark + Gold/Bronze */
+  --color-bg-primary: #1A1A1A;
+  --color-bg-secondary: #2C2C2C;
+  --color-bg-tertiary: #333333;
+  --color-bg-footer: #111111;
+  --color-text-primary: #F5F0E8;
+  --color-text-secondary: #A09888;
+  --color-text-muted: #666666;
+  --color-accent: #C9A96E;
+  --color-accent-dark: #8B7355;
+  --color-accent-light: #D4B87A;
+  --color-whatsapp: #25D366;
+  --color-border: #333333;
+
+  /* Font families defined as theme tokens */
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+}
+
+/* Base styles */
+body {
+  background-color: #1A1A1A;
+  color: #F5F0E8;
+  font-family: var(--font-body);
+}
+
+/* Scrollbar styling for dark theme */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #1A1A1A; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #C9A96E; }
+
+/* Selection color */
+::selection {
+  background: rgba(201, 169, 110, 0.3);
+  color: #F5F0E8;
+}
+
+/* Custom animations */
+@keyframes progressBar {
+  0% { transform: scaleX(0); transform-origin: left; }
+  50% { transform: scaleX(1); transform-origin: left; }
+  50.01% { transform-origin: right; }
+  100% { transform: scaleX(0); transform-origin: right; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes goldGlow {
+  0%, 100% { box-shadow: 0 0 5px rgba(201, 169, 110, 0.1); }
+  50% { box-shadow: 0 0 20px rgba(201, 169, 110, 0.2); }
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
