@@ -1,65 +1,100 @@
-import Image from "next/image";
+import { Service, Testimonial, SiteContent } from "@/types";
+import {
+  defaultServices,
+  defaultTestimonials,
+  defaultContent,
+} from "@/lib/data";
+import ProgressBar from "@/components/ProgressBar";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import ServicesSection from "@/components/ServicesSection";
+import AboutSection from "@/components/AboutSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import ContactSection from "@/components/ContactSection";
+import Footer from "@/components/Footer";
 
-export default function Home() {
+const BACKEND_URL = process.env.BACKEND_URL || "http://204.168.153.43:8444";
+
+async function getData() {
+  try {
+    const [contentRes, servicesRes, testimonialsRes] = await Promise.all([
+      fetch(`${BACKEND_URL}/api/content`, { next: { revalidate: 60 } }),
+      fetch(`${BACKEND_URL}/api/services`, { next: { revalidate: 60 } }),
+      fetch(`${BACKEND_URL}/api/testimonials`, { next: { revalidate: 60 } }),
+    ]);
+
+    const rawContent = contentRes.ok ? await contentRes.json() : null;
+    const rawServices = servicesRes.ok ? await servicesRes.json() : null;
+    const rawTestimonials = testimonialsRes.ok
+      ? await testimonialsRes.json()
+      : null;
+
+    const content: SiteContent = rawContent
+      ? {
+          hero: {
+            subtitle:
+              rawContent.hero?.subtitle || defaultContent.hero.subtitle,
+            tagline: rawContent.hero?.tagline || defaultContent.hero.tagline,
+            cta: rawContent.hero?.cta || defaultContent.hero.cta,
+          },
+          about: {
+            title: rawContent.about?.title || defaultContent.about.title,
+            text: rawContent.about?.text || defaultContent.about.text,
+          },
+          cta: {
+            title: rawContent.cta?.title || defaultContent.cta.title,
+            subtitle:
+              rawContent.cta?.subtitle || defaultContent.cta.subtitle,
+          },
+        }
+      : defaultContent;
+
+    const services: Service[] = rawServices
+      ? rawServices.map((s: Record<string, unknown>) => ({
+          id: s.id,
+          title: s.title,
+          slug: s.slug,
+          shortDescription: s.short_description,
+          longDescription: s.long_description,
+          subServices: s.sub_services || [],
+          sortOrder: s.sort_order,
+          active: s.active,
+        }))
+      : defaultServices;
+
+    const testimonials: Testimonial[] = rawTestimonials
+      ? rawTestimonials.map((t: Record<string, unknown>) => ({
+          id: t.id,
+          clientName: t.client_name,
+          jobType: t.job_type,
+          quote: t.quote,
+          visible: t.visible,
+        }))
+      : defaultTestimonials;
+
+    return { content, services, testimonials };
+  } catch {
+    return {
+      content: defaultContent,
+      services: defaultServices,
+      testimonials: defaultTestimonials,
+    };
+  }
+}
+
+export default async function HomePage() {
+  const { content, services, testimonials } = await getData();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main>
+      <ProgressBar />
+      <Navbar />
+      <HeroSection content={content.hero} />
+      <ServicesSection services={services} />
+      <AboutSection content={content.about} />
+      <TestimonialsSection testimonials={testimonials} />
+      <ContactSection content={content.cta} />
+      <Footer />
+    </main>
   );
 }
