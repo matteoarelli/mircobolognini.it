@@ -57,9 +57,9 @@ export default function TestimonialsSection({
       {/* Separatore superiore */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60px] h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
 
-      {/* Cerchio/arco dorato decorativo dietro le citazioni */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-accent/[0.04] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] rounded-full border border-accent/[0.06] pointer-events-none" />
+      {/* Cerchio/arco dorato decorativo — nascosti su mobile per evitare clutter */}
+      <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-accent/[0.04] pointer-events-none" />
+      <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] rounded-full border border-accent/[0.06] pointer-events-none" />
 
       <div
         className="max-w-3xl mx-auto text-center relative z-10"
@@ -93,8 +93,8 @@ export default function TestimonialsSection({
               {/* Stelle dorate */}
               <StarRating count={5} />
 
-              {/* Citazione */}
-              <p className="font-heading italic text-[clamp(1.15rem,2.5vw,1.65rem)] text-text-primary leading-[1.6] px-4">
+              {/* Citazione — leggermente piu piccola su mobile */}
+              <p className="font-heading italic text-[clamp(1.05rem,2.5vw,1.65rem)] text-text-primary leading-[1.6] px-2 sm:px-4">
                 {current.quote}
               </p>
 
@@ -117,7 +117,7 @@ export default function TestimonialsSection({
           {visible.map((_, i) => (
             <button
               key={i}
-              className="relative p-2 focus-visible:outline-none group"
+              className="relative p-3 min-w-[44px] min-h-[44px] flex items-center justify-center focus-visible:outline-none group"
               onClick={() => setCurrentIndex(i)}
               aria-label={`Vai alla testimonianza ${i + 1}`}
             >

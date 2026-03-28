@@ -137,6 +137,28 @@ body::after {
   50% { opacity: 0.06; }
 }
 
+/* Glow dorato sul titolo servizio al hover della riga */
+.group:hover .service-title {
+  text-shadow: 0 0 20px rgba(201, 169, 110, 0.3), 0 0 40px rgba(201, 169, 110, 0.1);
+}
+
+/* Shimmer dorato placeholder per immagini in caricamento */
+.image-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(201, 169, 110, 0.03) 25%,
+    rgba(201, 169, 110, 0.08) 50%,
+    rgba(201, 169, 110, 0.03) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* GPU acceleration per elementi parallax */
+.will-change-transform {
+  will-change: transform;
+}
+
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;

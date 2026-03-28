@@ -33,14 +33,14 @@ export default function ContactSection({ content }: ContactSectionProps) {
 
       <ScrollReveal>
         <div className="max-w-2xl mx-auto relative">
-          {/* Cornice dorata decorativa attorno al contenuto */}
-          <div className="absolute -inset-8 sm:-inset-12 border border-accent/[0.08] pointer-events-none" />
-          <div className="absolute -inset-8 sm:-inset-12 pointer-events-none">
-            {/* Angoli decorativi */}
-            <div className="absolute top-0 left-0 w-6 h-6 border-t border-l border-accent/30" />
-            <div className="absolute top-0 right-0 w-6 h-6 border-t border-r border-accent/30" />
-            <div className="absolute bottom-0 left-0 w-6 h-6 border-b border-l border-accent/30" />
-            <div className="absolute bottom-0 right-0 w-6 h-6 border-b border-r border-accent/30" />
+          {/* Cornice dorata decorativa — ridotta su mobile */}
+          <div className="absolute -inset-4 sm:-inset-8 md:-inset-12 border border-accent/[0.08] pointer-events-none" />
+          <div className="absolute -inset-4 sm:-inset-8 md:-inset-12 pointer-events-none">
+            {/* Angoli decorativi — piu piccoli su mobile */}
+            <div className="absolute top-0 left-0 w-4 h-4 sm:w-6 sm:h-6 border-t border-l border-accent/30" />
+            <div className="absolute top-0 right-0 w-4 h-4 sm:w-6 sm:h-6 border-t border-r border-accent/30" />
+            <div className="absolute bottom-0 left-0 w-4 h-4 sm:w-6 sm:h-6 border-b border-l border-accent/30" />
+            <div className="absolute bottom-0 right-0 w-4 h-4 sm:w-6 sm:h-6 border-b border-r border-accent/30" />
           </div>
 
           {/* Titolo — dimensioni generose e drammatiche */}
@@ -53,13 +53,13 @@ export default function ContactSection({ content }: ContactSectionProps) {
             {content.subtitle}
           </p>
 
-          {/* Pulsanti CTA */}
+          {/* Pulsanti CTA — stacked full-width su mobile */}
           <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mt-14">
             {/* Chiama */}
             <a
               href="tel:+393392556785"
               onClick={() => trackContact("call")}
-              className="btn-gold flex items-center justify-center gap-2.5 border border-accent text-accent px-7 py-3.5 text-sm tracking-[0.1em] uppercase hover:bg-accent hover:text-bg-primary transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
+              className="btn-gold flex items-center justify-center gap-2.5 border border-accent text-accent px-7 py-4 sm:py-3.5 text-sm tracking-[0.1em] uppercase hover:bg-accent hover:text-bg-primary transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary w-full sm:w-auto min-h-[48px]"
             >
               <svg
                 width="16"
@@ -82,7 +82,7 @@ export default function ContactSection({ content }: ContactSectionProps) {
               onClick={() => trackContact("whatsapp")}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2.5 bg-whatsapp text-white px-7 py-3.5 text-sm tracking-[0.1em] uppercase hover:bg-whatsapp/80 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-whatsapp focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
+              className="flex items-center justify-center gap-2.5 bg-whatsapp text-white px-7 py-4 sm:py-3.5 text-sm tracking-[0.1em] uppercase hover:bg-whatsapp/80 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-whatsapp focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary w-full sm:w-auto min-h-[48px]"
             >
               <svg
                 width="16"
@@ -99,7 +99,7 @@ export default function ContactSection({ content }: ContactSectionProps) {
             <a
               href="mailto:info@mircobolognini.it"
               onClick={() => trackContact("email")}
-              className="flex items-center justify-center gap-2.5 border border-border text-text-secondary px-7 py-3.5 text-sm tracking-[0.1em] uppercase hover:border-accent hover:text-accent transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
+              className="flex items-center justify-center gap-2.5 border border-border text-text-secondary px-7 py-4 sm:py-3.5 text-sm tracking-[0.1em] uppercase hover:border-accent hover:text-accent transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary w-full sm:w-auto min-h-[48px]"
             >
               <svg
                 width="16"

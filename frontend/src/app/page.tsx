@@ -12,6 +12,8 @@ import AboutSection from "@/components/AboutSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import CursorDot from "@/components/CursorDot";
+import PageEntryAnimation from "@/components/PageEntryAnimation";
 
 const BACKEND_URL = process.env.BACKEND_URL || "http://204.168.153.43:8444";
 
@@ -88,13 +90,16 @@ export default async function HomePage() {
   return (
     <main>
       <ProgressBar />
+      <CursorDot />
       <Navbar />
-      <HeroSection content={content.hero} />
-      <ServicesSection services={services} />
-      <AboutSection content={content.about} />
-      <TestimonialsSection testimonials={testimonials} />
-      <ContactSection content={content.cta} />
-      <Footer />
+      <PageEntryAnimation>
+        <HeroSection content={content.hero} />
+        <ServicesSection services={services} />
+        <AboutSection content={content.about} />
+        <TestimonialsSection testimonials={testimonials} />
+        <ContactSection content={content.cta} />
+        <Footer />
+      </PageEntryAnimation>
     </main>
   );
 }

@@ -18,7 +18,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
   };
 
   return (
-    <section id="servizi" className="py-24 sm:py-32 md:py-40 px-6 relative overflow-hidden">
+    <section id="servizi" className="py-24 sm:py-32 md:py-40 px-6 relative overflow-hidden" style={{ backgroundColor: "#1e1e1e" }}>
       {/* Separatore superiore sottile */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60px] h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
 
@@ -52,16 +52,16 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
 
                   {/* Riga cliccabile */}
                   <button
-                    className="w-full flex items-center gap-4 sm:gap-6 py-6 sm:py-7 pl-4 text-left group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary rounded relative z-10"
+                    className="w-full flex items-center gap-4 sm:gap-6 py-6 sm:py-7 pl-4 text-left group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary rounded relative z-10 min-h-[48px]"
                     onClick={() => toggleService(service.id)}
                     aria-expanded={expandedId === service.id}
                   >
-                    {/* Numero */}
-                    <span className="font-heading text-lg text-accent/70 min-w-[2.5rem] transition-colors duration-300 group-hover:text-accent">
+                    {/* Numero — slide a destra al hover */}
+                    <span className="font-heading text-lg text-accent/70 min-w-[2.5rem] transition-all duration-300 group-hover:text-accent group-hover:translate-x-1.5">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    {/* Titolo */}
-                    <span className="flex-1 text-text-primary tracking-wide text-lg font-body group-hover:text-accent transition-colors duration-300">
+                    {/* Titolo — glow dorato al hover */}
+                    <span className="service-title flex-1 text-text-primary tracking-wide text-lg font-body group-hover:text-accent transition-all duration-300">
                       {service.title}
                     </span>
                     {/* Freccia con rotazione fluida */}
@@ -93,13 +93,13 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                           <p className="text-text-secondary leading-[1.8] text-[15px] mb-5">
                             {service.shortDescription}
                           </p>
-                          {/* Tag sotto-servizi se disponibili */}
+                          {/* Tag sotto-servizi — touch-friendly su mobile */}
                           {service.subServices && service.subServices.length > 0 && (
-                            <div className="flex flex-wrap gap-2 mb-5">
+                            <div className="flex flex-wrap gap-2 sm:gap-2.5 mb-5">
                               {service.subServices.map((sub, idx) => (
                                 <span
                                   key={idx}
-                                  className="text-xs text-accent/80 border border-accent/20 px-3 py-1 tracking-wide"
+                                  className="text-xs text-accent/80 border border-accent/20 px-3 py-2 sm:py-1 tracking-wide min-h-[36px] sm:min-h-0 flex items-center"
                                 >
                                   {sub}
                                 </span>

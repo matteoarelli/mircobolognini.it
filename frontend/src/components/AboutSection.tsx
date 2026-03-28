@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
 interface AboutSectionProps {
@@ -64,10 +65,18 @@ export default function AboutSection({ content }: AboutSectionProps) {
           </div>
         </ScrollReveal>
 
-        {/* Colonna destra — immagine (40%) con clip-path */}
-        <ScrollReveal className="md:w-[40%]" delay={0.15}>
+        {/* Colonna destra — immagine (40%) con scale al viewport entry */}
+        <motion.div
+          className="md:w-[40%]"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.8, delay: 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+        >
           <div className="group relative">
-            <div className="overflow-hidden" style={{ clipPath: "polygon(0 0, 100% 0, 100% 92%, 8% 100%)" }}>
+            {/* Shimmer placeholder — visibile prima del caricamento immagine */}
+            <div className="absolute inset-0 image-shimmer rounded-none z-0" style={{ clipPath: "polygon(0 0, 100% 0, 100% 92%, 8% 100%)" }} />
+            <div className="overflow-hidden relative z-10" style={{ clipPath: "polygon(0 0, 100% 0, 100% 92%, 8% 100%)" }}>
               <img
                 src="https://images.pexels.com/photos/3760529/pexels-photo-3760529.jpeg?auto=compress&cs=tinysrgb&w=800"
                 alt="Studio di architettura"
@@ -80,7 +89,7 @@ export default function AboutSection({ content }: AboutSectionProps) {
               style={{ clipPath: "polygon(0 0, 100% 0, 100% 92%, 8% 100%)" }}
             />
           </div>
-        </ScrollReveal>
+        </motion.div>
       </div>
     </section>
   );
