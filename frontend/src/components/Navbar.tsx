@@ -24,16 +24,16 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-40 transition-all duration-500 ${
+        className={`fixed top-0 left-0 w-full z-40 transition-all duration-700 ${
           scrolled
-            ? "bg-[#1A1A1A]/90 backdrop-blur-md shadow-lg shadow-black/20"
+            ? "bg-[#1A1A1A]/95 backdrop-blur-lg shadow-lg shadow-black/20"
             : "bg-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
+          {/* Logo con bordo contenitore */}
           <a href="#" className="flex items-center gap-3 group focus-visible:outline-none">
-            <span className="text-accent font-heading font-bold text-xl tracking-wide transition-all duration-300 group-hover:text-accent-light">
+            <span className="text-accent font-heading font-bold text-xl tracking-wide transition-all duration-300 group-hover:text-accent-light border border-accent/30 px-2.5 py-0.5 group-hover:border-accent/60">
               MB
             </span>
             <span className="text-text-primary text-sm hidden sm:inline tracking-wide">
@@ -47,7 +47,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-text-primary text-sm tracking-[0.08em] hover:text-accent transition-colors duration-300 focus-visible:outline-none focus-visible:text-accent"
+                className="text-text-primary text-sm tracking-[0.08em] hover:text-accent transition-colors duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-accent after:transition-all after:duration-300 hover:after:w-full focus-visible:outline-none focus-visible:text-accent"
               >
                 {link.label}
               </a>
@@ -73,6 +73,13 @@ export default function Navbar() {
             <span className="w-4 h-[1.5px] bg-accent transition-all" />
           </button>
         </div>
+
+        {/* Linea dorata sottile sotto la navbar quando scrollata */}
+        <div
+          className={`absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent transition-opacity duration-700 ${
+            scrolled ? "opacity-100" : "opacity-0"
+          }`}
+        />
       </nav>
 
       {/* Menu mobile fullscreen */}

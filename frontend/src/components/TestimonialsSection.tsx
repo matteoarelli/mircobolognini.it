@@ -9,6 +9,26 @@ interface TestimonialsSectionProps {
   testimonials: Testimonial[];
 }
 
+// Componente stelle dorate
+function StarRating({ count = 5 }: { count?: number }) {
+  return (
+    <div className="flex items-center justify-center gap-1 mb-6">
+      {Array.from({ length: count }).map((_, i) => (
+        <svg
+          key={i}
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          className="text-accent"
+        >
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
 // Sezione testimonianze con crossfade automatico e indicatori
 export default function TestimonialsSection({
   testimonials,
@@ -33,12 +53,16 @@ export default function TestimonialsSection({
   const current = visible[currentIndex];
 
   return (
-    <section id="testimonianze" className="bg-bg-secondary py-24 sm:py-32 md:py-40 px-6 relative">
+    <section id="testimonianze" className="bg-bg-secondary py-28 sm:py-36 md:py-44 px-6 relative overflow-hidden">
       {/* Separatore superiore */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60px] h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
 
+      {/* Cerchio/arco dorato decorativo dietro le citazioni */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-accent/[0.04] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[380px] rounded-full border border-accent/[0.06] pointer-events-none" />
+
       <div
-        className="max-w-3xl mx-auto text-center"
+        className="max-w-3xl mx-auto text-center relative z-10"
         onMouseEnter={() => setPaused(true)}
         onMouseLeave={() => setPaused(false)}
       >
@@ -51,9 +75,9 @@ export default function TestimonialsSection({
         </ScrollReveal>
 
         {/* Area citazione */}
-        <div className="relative min-h-[220px] flex items-center justify-center">
-          {/* Virgolettone decorativo */}
-          <span className="absolute -top-6 left-0 md:left-8 text-[100px] sm:text-[140px] leading-none font-heading text-accent/[0.08] select-none pointer-events-none">
+        <div className="relative min-h-[260px] flex items-center justify-center">
+          {/* Virgolettone decorativo — piu grande e visibile */}
+          <span className="absolute -top-4 left-0 md:left-4 text-[120px] sm:text-[180px] leading-none font-heading text-accent/[0.12] select-none pointer-events-none">
             &ldquo;
           </span>
 
@@ -66,6 +90,9 @@ export default function TestimonialsSection({
               transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
               className="relative z-10"
             >
+              {/* Stelle dorate */}
+              <StarRating count={5} />
+
               {/* Citazione */}
               <p className="font-heading italic text-[clamp(1.15rem,2.5vw,1.65rem)] text-text-primary leading-[1.6] px-4">
                 {current.quote}
@@ -86,7 +113,7 @@ export default function TestimonialsSection({
         </div>
 
         {/* Indicatori a pallini */}
-        <div className="flex justify-center gap-2 mt-10">
+        <div className="flex justify-center gap-2 mt-12">
           {visible.map((_, i) => (
             <button
               key={i}

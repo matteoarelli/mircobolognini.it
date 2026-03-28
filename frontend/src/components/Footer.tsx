@@ -27,16 +27,17 @@ export default function Footer() {
   return (
     <>
       <footer className="bg-bg-footer py-16 px-6 relative">
-        {/* Separatore superiore dorato */}
-        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+        {/* Gradiente dorato sottile in cima */}
+        <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+        <div className="absolute top-0 left-0 w-full h-16 bg-gradient-to-b from-accent/[0.03] to-transparent pointer-events-none" />
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
-          {/* Colonna 1 — Brand */}
+          {/* Colonna 1 — Brand con logo piu prominente */}
           <div>
-            <span className="text-accent font-heading text-2xl font-bold tracking-wide">
+            <span className="inline-block text-accent font-heading text-4xl font-bold tracking-wide border border-accent/20 px-4 py-1 transition-all duration-500 hover:shadow-[0_0_25px_rgba(201,169,110,0.15)] hover:border-accent/40 cursor-default">
               MB
             </span>
-            <p className="text-text-secondary text-sm mt-3 leading-relaxed">
+            <p className="text-text-secondary text-sm mt-4 leading-relaxed">
               Mirco Bolognini Architetto
             </p>
           </div>
