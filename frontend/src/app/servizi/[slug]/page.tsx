@@ -4,6 +4,8 @@ import Link from "next/link";
 import { Service } from "@/types";
 import { defaultServices } from "@/lib/data";
 import { ServiceReveal, BreadcrumbReveal, ServiceNumber } from "./ServiceDetailClient";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const BACKEND_URL = process.env.BACKEND_URL || "http://204.168.153.43:8444";
 
@@ -147,7 +149,8 @@ export default async function ServiceDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }}
       />
 
-      <main className="max-w-4xl mx-auto px-6 py-36 md:py-40">
+      <Navbar />
+      <main className="max-w-4xl mx-auto px-6 py-28 sm:py-36 md:py-40">
         <div className="relative">
           {/* Numero decorativo */}
           <ServiceNumber number={serviceNumber} />
@@ -156,13 +159,13 @@ export default async function ServiceDetailPage({
           <BreadcrumbReveal>
             <ol className="flex items-center gap-2 text-xs tracking-wide text-text-muted">
               <li>
-                <Link href="/" className="hover:text-accent transition-colors duration-300">
+                <Link href="/" className="hover:text-accent transition-colors duration-300 focus-visible:outline-none focus-visible:text-accent">
                   Home
                 </Link>
               </li>
               <li className="text-accent/30">/</li>
               <li>
-                <Link href="/#servizi" className="hover:text-accent transition-colors duration-300">
+                <Link href="/#servizi" className="hover:text-accent transition-colors duration-300 focus-visible:outline-none focus-visible:text-accent">
                   Servizi
                 </Link>
               </li>
@@ -207,11 +210,11 @@ export default async function ServiceDetailPage({
               <h2 className="font-heading text-[clamp(1.5rem,3vw,2rem)] text-text-primary leading-[1.2]">
                 Interessato a questo servizio?
               </h2>
-              <div className="flex flex-wrap gap-4 mt-8">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 mt-8">
                 {/* Chiama */}
                 <a
                   href="tel:+393392556785"
-                  className="btn-gold flex items-center gap-2.5 border border-accent text-accent px-7 py-3.5 text-sm tracking-[0.1em] uppercase hover:bg-accent hover:text-bg-primary transition-all duration-300"
+                  className="btn-gold flex items-center justify-center gap-2.5 border border-accent text-accent px-7 py-3.5 text-sm tracking-[0.1em] uppercase hover:bg-accent hover:text-bg-primary transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
                 >
                   <svg
                     width="16"
@@ -233,7 +236,7 @@ export default async function ServiceDetailPage({
                   href="https://wa.me/393392556785"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 bg-whatsapp text-white px-7 py-3.5 text-sm tracking-[0.1em] uppercase hover:bg-whatsapp/80 transition-all duration-300"
+                  className="flex items-center justify-center gap-2.5 bg-whatsapp text-white px-7 py-3.5 text-sm tracking-[0.1em] uppercase hover:bg-whatsapp/80 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-whatsapp focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
                 >
                   <svg
                     width="16"
@@ -250,13 +253,13 @@ export default async function ServiceDetailPage({
           </ServiceReveal>
 
           {/* Navigazione prev/next */}
-          <div className="mt-20 border-t border-accent/10 pt-10 flex justify-between">
+          <div className="mt-20 border-t border-accent/10 pt-10 flex flex-col sm:flex-row justify-between gap-8 sm:gap-4">
             {prevService ? (
               <Link
                 href={`/servizi/${prevService.slug}`}
-                className="group text-left"
+                className="group text-left focus-visible:outline-none"
               >
-                <span className="text-text-muted text-xs tracking-wide uppercase group-hover:text-accent transition-colors duration-300">
+                <span className="text-text-muted text-xs tracking-wide uppercase group-hover:text-accent group-focus-visible:text-accent transition-colors duration-300">
                   &larr; Precedente
                 </span>
                 <span className="block text-text-secondary group-hover:text-text-primary transition-colors duration-300 mt-1.5 font-heading text-lg">
@@ -270,9 +273,9 @@ export default async function ServiceDetailPage({
             {nextService ? (
               <Link
                 href={`/servizi/${nextService.slug}`}
-                className="group text-right"
+                className="group text-left sm:text-right focus-visible:outline-none"
               >
-                <span className="text-text-muted text-xs tracking-wide uppercase group-hover:text-accent transition-colors duration-300">
+                <span className="text-text-muted text-xs tracking-wide uppercase group-hover:text-accent group-focus-visible:text-accent transition-colors duration-300">
                   Successivo &rarr;
                 </span>
                 <span className="block text-text-secondary group-hover:text-text-primary transition-colors duration-300 mt-1.5 font-heading text-lg">
@@ -285,6 +288,7 @@ export default async function ServiceDetailPage({
           </div>
         </div>
       </main>
+      <Footer />
     </>
   );
 }

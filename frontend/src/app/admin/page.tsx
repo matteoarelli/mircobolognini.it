@@ -67,7 +67,7 @@ export default function AdminDashboard() {
     <div>
       <h1 className="font-heading text-2xl text-text-primary">Dashboard</h1>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
         {cards.map((card) => (
           <Link
             key={card.href}

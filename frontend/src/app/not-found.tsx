@@ -25,7 +25,7 @@ export default function NotFound() {
       {/* Pulsante ritorno */}
       <Link
         href="/"
-        className="btn-gold mt-10 border border-accent text-accent px-10 py-4 text-sm tracking-[0.15em] uppercase hover:bg-accent hover:text-bg-primary transition-all duration-300"
+        className="btn-gold mt-10 border border-accent text-accent px-8 sm:px-10 py-3.5 sm:py-4 text-sm tracking-[0.15em] uppercase hover:bg-accent hover:text-bg-primary transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
       >
         Torna alla homepage
       </Link>

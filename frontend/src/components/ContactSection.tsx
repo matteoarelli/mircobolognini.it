@@ -21,7 +21,7 @@ interface ContactSectionProps {
 // Sezione contatti con CTA prominente e pulsanti azione
 export default function ContactSection({ content }: ContactSectionProps) {
   return (
-    <section id="contatti" className="py-32 md:py-40 px-6 text-center relative">
+    <section id="contatti" className="py-24 sm:py-32 md:py-40 px-6 text-center relative">
       {/* Separatore superiore */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60px] h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
 
@@ -37,12 +37,12 @@ export default function ContactSection({ content }: ContactSectionProps) {
         </p>
 
         {/* Pulsanti CTA */}
-        <div className="flex flex-wrap justify-center gap-4 mt-14">
+        <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mt-14">
           {/* Chiama */}
           <a
             href="tel:+393392556785"
             onClick={() => trackContact("call")}
-            className="btn-gold flex items-center gap-2.5 border border-accent text-accent px-7 py-3.5 text-sm tracking-[0.1em] uppercase hover:bg-accent hover:text-bg-primary transition-all duration-300"
+            className="btn-gold flex items-center justify-center gap-2.5 border border-accent text-accent px-7 py-3.5 text-sm tracking-[0.1em] uppercase hover:bg-accent hover:text-bg-primary transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
           >
             <svg
               width="16"
@@ -65,7 +65,7 @@ export default function ContactSection({ content }: ContactSectionProps) {
             onClick={() => trackContact("whatsapp")}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2.5 bg-whatsapp text-white px-7 py-3.5 text-sm tracking-[0.1em] uppercase hover:bg-whatsapp/80 transition-all duration-300"
+            className="flex items-center justify-center gap-2.5 bg-whatsapp text-white px-7 py-3.5 text-sm tracking-[0.1em] uppercase hover:bg-whatsapp/80 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-whatsapp focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
           >
             <svg
               width="16"
@@ -82,7 +82,7 @@ export default function ContactSection({ content }: ContactSectionProps) {
           <a
             href="mailto:info@mircobolognini.it"
             onClick={() => trackContact("email")}
-            className="flex items-center gap-2.5 border border-border text-text-secondary px-7 py-3.5 text-sm tracking-[0.1em] uppercase hover:border-accent hover:text-accent transition-all duration-300"
+            className="flex items-center justify-center gap-2.5 border border-border text-text-secondary px-7 py-3.5 text-sm tracking-[0.1em] uppercase hover:border-accent hover:text-accent transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
           >
             <svg
               width="16"
@@ -102,9 +102,12 @@ export default function ContactSection({ content }: ContactSectionProps) {
         </div>
 
         {/* Indirizzo e orari */}
-        <div className="mt-16 text-text-muted text-xs tracking-wide space-y-1.5">
-          <p>Via Ascoli Piceno, 99, 60126 Ancona AN</p>
-          <p>Lun-Ven 09-13 / 15-19 | Sab 10-12:30</p>
+        <div className="mt-16 space-y-3">
+          <div className="w-6 h-[1px] bg-accent/30 mx-auto" />
+          <div className="text-text-muted text-xs tracking-wide space-y-1.5">
+            <p>Via Ascoli Piceno, 99, 60126 Ancona AN</p>
+            <p>Lun-Ven 09-13 / 15-19 | Sab 10-12:30</p>
+          </div>
         </div>
       </ScrollReveal>
     </section>

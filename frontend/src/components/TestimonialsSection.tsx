@@ -33,7 +33,7 @@ export default function TestimonialsSection({
   const current = visible[currentIndex];
 
   return (
-    <section id="testimonianze" className="bg-bg-secondary py-32 md:py-40 px-6 relative">
+    <section id="testimonianze" className="bg-bg-secondary py-24 sm:py-32 md:py-40 px-6 relative">
       {/* Separatore superiore */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60px] h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
 
@@ -53,7 +53,7 @@ export default function TestimonialsSection({
         {/* Area citazione */}
         <div className="relative min-h-[220px] flex items-center justify-center">
           {/* Virgolettone decorativo */}
-          <span className="absolute -top-6 left-0 md:left-8 text-[140px] leading-none font-heading text-accent/[0.08] select-none pointer-events-none">
+          <span className="absolute -top-6 left-0 md:left-8 text-[100px] sm:text-[140px] leading-none font-heading text-accent/[0.08] select-none pointer-events-none">
             &ldquo;
           </span>
 
@@ -86,18 +86,22 @@ export default function TestimonialsSection({
         </div>
 
         {/* Indicatori a pallini */}
-        <div className="flex justify-center gap-3 mt-10">
+        <div className="flex justify-center gap-2 mt-10">
           {visible.map((_, i) => (
             <button
               key={i}
-              className={`rounded-full transition-all duration-500 ease-out ${
-                i === currentIndex
-                  ? "bg-accent w-6 h-1.5"
-                  : "bg-bg-tertiary w-1.5 h-1.5 hover:bg-accent/40"
-              }`}
+              className="relative p-2 focus-visible:outline-none group"
               onClick={() => setCurrentIndex(i)}
               aria-label={`Vai alla testimonianza ${i + 1}`}
-            />
+            >
+              <span
+                className={`block rounded-full transition-all duration-500 ease-out ${
+                  i === currentIndex
+                    ? "bg-accent w-6 h-1.5"
+                    : "bg-bg-tertiary w-1.5 h-1.5 group-hover:bg-accent/40"
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>

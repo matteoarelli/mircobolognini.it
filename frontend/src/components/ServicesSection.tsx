@@ -18,7 +18,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
   };
 
   return (
-    <section id="servizi" className="py-32 md:py-40 px-6 relative">
+    <section id="servizi" className="py-24 sm:py-32 md:py-40 px-6 relative">
       {/* Separatore superiore sottile */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[60px] h-[1px] bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
 
@@ -41,7 +41,7 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                 <div className="border-b border-[#2a2a2a]">
                   {/* Riga cliccabile */}
                   <button
-                    className="w-full flex items-center gap-6 py-7 text-left group"
+                    className="w-full flex items-center gap-4 sm:gap-6 py-6 sm:py-7 text-left group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary rounded"
                     onClick={() => toggleService(service.id)}
                     aria-expanded={expandedId === service.id}
                   >
@@ -78,13 +78,13 @@ export default function ServicesSection({ services }: ServicesSectionProps) {
                         }}
                         className="overflow-hidden"
                       >
-                        <div className="pb-7 pl-[calc(2.5rem+1.5rem)]">
+                        <div className="pb-7 pl-0 sm:pl-[calc(2.5rem+1.5rem)]">
                           <p className="text-text-secondary leading-[1.8] text-[15px] mb-5">
                             {service.shortDescription}
                           </p>
                           <a
                             href={`/servizi/${service.slug}`}
-                            className="text-accent text-sm tracking-[0.1em] uppercase hover:underline underline-offset-4 transition-all duration-300"
+                            className="inline-block text-accent text-sm tracking-[0.1em] uppercase hover:underline underline-offset-4 transition-all duration-300 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
                           >
                             Approfondisci &rarr;
                           </a>

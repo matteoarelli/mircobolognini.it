@@ -89,6 +89,22 @@ body {
   100% { background-position: 200% 0; }
 }
 
+/* Focus-visible globale — ring dorato accessibile */
+:focus-visible {
+  outline: 2px solid #C9A96E;
+  outline-offset: 2px;
+}
+
+/* Rimuovi outline di default per mouse, mantieni per tastiera */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Safe area per dispositivi con notch / home indicator */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
 /* Smooth scroll */
 html {
   scroll-behavior: smooth;

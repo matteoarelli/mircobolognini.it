@@ -17,7 +17,7 @@ export default function ProgressBar() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-full h-[2px] z-50 bg-gradient-to-r from-accent-dark via-accent to-accent-light"
+      className="fixed top-0 left-0 w-full h-[3px] z-50 bg-gradient-to-r from-accent-dark via-accent to-accent-light"
       initial={{ scaleX: 0, transformOrigin: "left" }}
       animate={{
         scaleX: [0, 1, 1, 0],

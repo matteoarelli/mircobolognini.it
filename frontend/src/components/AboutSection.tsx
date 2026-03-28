@@ -14,7 +14,7 @@ export default function AboutSection({ content }: AboutSectionProps) {
   const paragraphs = content.text.split("\n\n");
 
   return (
-    <section id="chi-sono" className="py-32 md:py-40 px-6">
+    <section id="chi-sono" className="py-24 sm:py-32 md:py-40 px-6">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 md:gap-20">
         {/* Colonna sinistra — testo (60%) */}
         <ScrollReveal className="md:w-[60%]">

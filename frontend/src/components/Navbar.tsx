@@ -32,7 +32,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <a href="#" className="flex items-center gap-3 group focus-visible:outline-none">
             <span className="text-accent font-heading font-bold text-xl tracking-wide transition-all duration-300 group-hover:text-accent-light">
               MB
             </span>
@@ -47,7 +47,7 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-text-primary text-sm tracking-[0.08em] hover:text-accent transition-colors duration-300"
+                className="text-text-primary text-sm tracking-[0.08em] hover:text-accent transition-colors duration-300 focus-visible:outline-none focus-visible:text-accent"
               >
                 {link.label}
               </a>
@@ -57,14 +57,14 @@ export default function Navbar() {
           {/* CTA desktop — pulsante premium */}
           <a
             href="#contatti"
-            className="btn-gold hidden md:inline-block border border-accent text-accent px-6 py-2 text-xs tracking-[0.15em] uppercase hover:bg-accent hover:text-bg-primary transition-all duration-300"
+            className="btn-gold hidden md:inline-block border border-accent text-accent px-6 py-2 text-xs tracking-[0.15em] uppercase hover:bg-accent hover:text-bg-primary transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
           >
             Contattami
           </a>
 
           {/* Hamburger mobile */}
           <button
-            className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5"
+            className="md:hidden flex flex-col justify-center items-center w-11 h-11 gap-1.5 -mr-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
             onClick={() => setMobileMenuOpen(true)}
             aria-label="Apri menu"
           >
@@ -87,7 +87,7 @@ export default function Navbar() {
           >
             {/* Pulsante chiudi */}
             <button
-              className="absolute top-6 right-6 text-text-primary w-10 h-10 flex items-center justify-center"
+              className="absolute top-5 right-5 text-text-primary w-12 h-12 flex items-center justify-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
               onClick={() => setMobileMenuOpen(false)}
               aria-label="Chiudi menu"
             >
@@ -109,7 +109,7 @@ export default function Navbar() {
                 <motion.a
                   key={link.href}
                   href={link.href}
-                  className="text-text-primary font-heading text-3xl tracking-wide hover:text-accent transition-colors duration-300"
+                  className="text-text-primary font-heading text-3xl tracking-wide hover:text-accent transition-colors duration-300 py-2 focus-visible:outline-none focus-visible:text-accent"
                   onClick={() => setMobileMenuOpen(false)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}

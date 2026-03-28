@@ -19,7 +19,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
   const skipAnimation = !!prefersReducedMotion;
 
   return (
-    <section className="relative h-screen w-full overflow-hidden flex flex-col-reverse md:flex-row">
+    <section className="relative min-h-screen w-full overflow-hidden flex flex-col-reverse md:flex-row">
       {/* Meta sinistra — testo */}
       <motion.div
         className="flex-1 md:w-1/2 flex items-center bg-bg-primary relative z-10"
@@ -27,7 +27,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
         animate={{ x: 0 }}
         transition={{ duration: 1.4, ease: doorEase }}
       >
-        <div className="px-8 md:px-16 lg:px-24 xl:px-32 py-16 md:py-0 w-full">
+        <div className="px-6 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-12 sm:py-16 md:py-0 w-full">
           {/* Sottotitolo */}
           <motion.p
             className="text-accent uppercase tracking-[0.25em] text-[11px] md:text-xs font-body font-medium mb-8"
@@ -72,7 +72,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
           {/* CTA — pulsante premium */}
           <motion.a
             href="#servizi"
-            className="btn-gold inline-block border border-accent text-accent px-10 py-4 text-sm tracking-[0.15em] uppercase hover:bg-accent hover:text-bg-primary transition-all duration-300"
+            className="btn-gold inline-block border border-accent text-accent px-8 sm:px-10 py-3.5 sm:py-4 text-sm tracking-[0.15em] uppercase hover:bg-accent hover:text-bg-primary transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary"
             initial={skipAnimation ? {} : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: skipAnimation ? 0 : 1.65, duration: 0.7, ease: "easeOut" }}
@@ -84,7 +84,7 @@ export default function HeroSection({ content }: HeroSectionProps) {
 
       {/* Meta destra — immagine */}
       <motion.div
-        className="h-[40vh] md:h-full md:w-1/2 relative"
+        className="h-[35vh] sm:h-[40vh] md:h-full md:w-1/2 relative"
         initial={skipAnimation ? {} : { x: "-50%" }}
         animate={{ x: 0 }}
         transition={{ duration: 1.4, ease: doorEase }}

@@ -82,19 +82,20 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       </aside>
 
       {/* Contenuto principale */}
-      <main className="ml-0 md:ml-60 p-6 pb-20 md:pb-6">{children}</main>
+      <main className="ml-0 md:ml-60 p-4 sm:p-6 pb-24 md:pb-6">{children}</main>
 
       {/* Barra navigazione mobile */}
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-bg-secondary border-t border-border flex items-center justify-around z-50">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-bg-secondary border-t border-border flex items-center justify-around z-50 safe-area-bottom">
         {navItems.slice(0, 5).map((item) => (
           <Link
             key={item.href}
             href={item.href}
-            className={`flex flex-col items-center justify-center text-xl ${
+            className={`flex flex-col items-center justify-center min-w-[3rem] py-1.5 text-lg ${
               isActive(item.href) ? "text-accent" : "text-text-muted"
             }`}
           >
             {item.icon}
+            <span className="text-[10px] mt-0.5 tracking-wide">{item.label}</span>
           </Link>
         ))}
       </nav>

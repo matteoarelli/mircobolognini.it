@@ -186,12 +186,12 @@ export default function TestimonianzePage() {
               renderForm()
             ) : (
               <div className="bg-bg-secondary p-4 rounded-lg border border-border">
-                <div className="flex items-center justify-between">
-                  <div>
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div className="min-w-0">
                     <span className="text-text-primary font-semibold">{item.client_name}</span>
                     <span className="text-text-muted text-sm ml-2">— {item.job_type}</span>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 shrink-0">
                     <button
                       onClick={() => toggleVisible(item)}
                       className={`text-xs px-2 py-1 rounded ${

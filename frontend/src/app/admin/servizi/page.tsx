@@ -197,8 +197,8 @@ export default function ServiziPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between">
-        <h1 className="font-heading text-2xl text-text-primary">Gestione Servizi</h1>
+      <div className="flex items-center justify-between gap-4 flex-wrap">
+        <h1 className="font-heading text-xl sm:text-2xl text-text-primary">Gestione Servizi</h1>
         <button
           onClick={startAdd}
           className="bg-accent text-bg-primary px-4 py-2 rounded font-semibold hover:bg-accent-dark transition text-sm"
@@ -223,17 +223,17 @@ export default function ServiziPage() {
               renderForm()
             ) : (
               <div className="bg-bg-secondary p-4 rounded-lg border border-border">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <span className="bg-bg-primary text-accent text-xs font-bold px-2 py-1 rounded">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div className="flex items-center gap-3 min-w-0">
+                    <span className="bg-bg-primary text-accent text-xs font-bold px-2 py-1 rounded shrink-0">
                       {svc.sort_order}
                     </span>
-                    <span className="text-text-primary font-semibold">{svc.title}</span>
+                    <span className="text-text-primary font-semibold truncate">{svc.title}</span>
                     {!svc.active && (
-                      <span className="text-text-muted text-xs">(disattivato)</span>
+                      <span className="text-text-muted text-xs shrink-0">(disattivato)</span>
                     )}
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 shrink-0">
                     <button
                       onClick={() =>
                         setExpandedId(expandedId === svc.id ? null : svc.id)
