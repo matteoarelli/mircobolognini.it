@@ -5,24 +5,27 @@ export default function NotFound() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6 text-center relative">
       {/* Numero grande decorativo */}
-      <span className="font-heading text-[120px] md:text-[180px] leading-none text-accent opacity-20 select-none">
+      <span className="font-heading text-[clamp(8rem,20vw,14rem)] leading-none text-accent/[0.08] select-none">
         404
       </span>
 
       {/* Titolo */}
-      <h1 className="font-heading text-2xl text-text-primary -mt-4">
+      <h1 className="font-heading text-[clamp(1.5rem,3vw,2.5rem)] text-text-primary -mt-6 tracking-[-0.01em]">
         Pagina non trovata
       </h1>
 
+      {/* Linea dorata */}
+      <div className="w-12 h-[1px] bg-accent/40 mt-6 mb-6" />
+
       {/* Descrizione */}
-      <p className="text-text-secondary mt-4 max-w-md">
+      <p className="text-text-secondary text-sm md:text-base max-w-md leading-relaxed">
         La pagina che stai cercando non esiste o è stata spostata.
       </p>
 
       {/* Pulsante ritorno */}
       <Link
         href="/"
-        className="mt-8 border border-accent text-accent px-8 py-3 tracking-wide hover:bg-accent hover:text-bg-primary transition-all duration-300"
+        className="btn-gold mt-10 border border-accent text-accent px-10 py-4 text-sm tracking-[0.15em] uppercase hover:bg-accent hover:text-bg-primary transition-all duration-300"
       >
         Torna alla homepage
       </Link>

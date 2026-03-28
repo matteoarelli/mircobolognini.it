@@ -147,26 +147,26 @@ export default async function ServiceDetailPage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaJsonLd) }}
       />
 
-      <main className="max-w-4xl mx-auto px-6 py-32">
+      <main className="max-w-4xl mx-auto px-6 py-36 md:py-40">
         <div className="relative">
           {/* Numero decorativo */}
           <ServiceNumber number={serviceNumber} />
 
           {/* Breadcrumb */}
           <BreadcrumbReveal>
-            <ol className="flex items-center gap-2 text-sm text-text-muted">
+            <ol className="flex items-center gap-2 text-xs tracking-wide text-text-muted">
               <li>
-                <Link href="/" className="hover:text-accent transition-colors">
+                <Link href="/" className="hover:text-accent transition-colors duration-300">
                   Home
                 </Link>
               </li>
-              <li>/</li>
+              <li className="text-accent/30">/</li>
               <li>
-                <Link href="/#servizi" className="hover:text-accent transition-colors">
+                <Link href="/#servizi" className="hover:text-accent transition-colors duration-300">
                   Servizi
                 </Link>
               </li>
-              <li>/</li>
+              <li className="text-accent/30">/</li>
               <li className="text-text-secondary">{service.title}</li>
             </ol>
           </BreadcrumbReveal>
@@ -174,15 +174,15 @@ export default async function ServiceDetailPage({
           {/* Contenuto principale */}
           <ServiceReveal>
             {/* Titolo */}
-            <h1 className="font-heading text-4xl md:text-5xl text-text-primary">
+            <h1 className="font-heading text-[clamp(2.5rem,5vw,3.5rem)] text-text-primary leading-[1.1] tracking-[-0.01em]">
               {service.title}
             </h1>
-            <div className="w-10 h-[2px] bg-accent mt-4" />
+            <div className="w-12 h-[1px] bg-accent mt-5" />
 
             {/* Descrizione lunga */}
-            <div className="mt-8 space-y-4">
+            <div className="mt-10 space-y-5">
               {paragraphs.map((p, i) => (
-                <p key={i} className="text-text-secondary leading-relaxed">
+                <p key={i} className="text-text-secondary leading-[1.8] text-[15px]">
                   {p}
                 </p>
               ))}
@@ -190,12 +190,12 @@ export default async function ServiceDetailPage({
 
             {/* Lista sotto-servizi */}
             {service.subServices.length > 0 && (
-              <div className="mt-8">
-                <ul className="space-y-3">
+              <div className="mt-10">
+                <ul className="space-y-3.5">
                   {service.subServices.map((sub, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <span className="w-2 h-2 rounded-full bg-accent mt-2 shrink-0" />
-                      <span className="text-text-secondary">{sub}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2.5 shrink-0" />
+                      <span className="text-text-secondary text-[15px] leading-[1.8]">{sub}</span>
                     </li>
                   ))}
                 </ul>
@@ -203,19 +203,19 @@ export default async function ServiceDetailPage({
             )}
 
             {/* CTA */}
-            <div className="mt-16">
-              <h2 className="font-heading text-2xl text-text-primary">
+            <div className="mt-20">
+              <h2 className="font-heading text-[clamp(1.5rem,3vw,2rem)] text-text-primary leading-[1.2]">
                 Interessato a questo servizio?
               </h2>
-              <div className="flex flex-wrap gap-4 mt-6">
+              <div className="flex flex-wrap gap-4 mt-8">
                 {/* Chiama */}
                 <a
                   href="tel:+393392556785"
-                  className="flex items-center gap-2 border border-accent text-accent px-6 py-3 rounded hover:bg-accent hover:text-bg-primary transition-all duration-300"
+                  className="btn-gold flex items-center gap-2.5 border border-accent text-accent px-7 py-3.5 text-sm tracking-[0.1em] uppercase hover:bg-accent hover:text-bg-primary transition-all duration-300"
                 >
                   <svg
-                    width="18"
-                    height="18"
+                    width="16"
+                    height="16"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -233,11 +233,11 @@ export default async function ServiceDetailPage({
                   href="https://wa.me/393392556785"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-whatsapp text-white px-6 py-3 rounded hover:bg-whatsapp/80 transition-all duration-300"
+                  className="flex items-center gap-2.5 bg-whatsapp text-white px-7 py-3.5 text-sm tracking-[0.1em] uppercase hover:bg-whatsapp/80 transition-all duration-300"
                 >
                   <svg
-                    width="18"
-                    height="18"
+                    width="16"
+                    height="16"
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >
@@ -250,16 +250,16 @@ export default async function ServiceDetailPage({
           </ServiceReveal>
 
           {/* Navigazione prev/next */}
-          <div className="mt-16 border-t border-border pt-8 flex justify-between">
+          <div className="mt-20 border-t border-accent/10 pt-10 flex justify-between">
             {prevService ? (
               <Link
                 href={`/servizi/${prevService.slug}`}
                 className="group text-left"
               >
-                <span className="text-text-muted text-sm group-hover:text-accent transition-colors">
-                  &larr; Servizio precedente
+                <span className="text-text-muted text-xs tracking-wide uppercase group-hover:text-accent transition-colors duration-300">
+                  &larr; Precedente
                 </span>
-                <span className="block text-text-secondary group-hover:text-text-primary transition-colors mt-1">
+                <span className="block text-text-secondary group-hover:text-text-primary transition-colors duration-300 mt-1.5 font-heading text-lg">
                   {prevService.title}
                 </span>
               </Link>
@@ -272,10 +272,10 @@ export default async function ServiceDetailPage({
                 href={`/servizi/${nextService.slug}`}
                 className="group text-right"
               >
-                <span className="text-text-muted text-sm group-hover:text-accent transition-colors">
-                  Servizio successivo &rarr;
+                <span className="text-text-muted text-xs tracking-wide uppercase group-hover:text-accent transition-colors duration-300">
+                  Successivo &rarr;
                 </span>
-                <span className="block text-text-secondary group-hover:text-text-primary transition-colors mt-1">
+                <span className="block text-text-secondary group-hover:text-text-primary transition-colors duration-300 mt-1.5 font-heading text-lg">
                   {nextService.title}
                 </span>
               </Link>
